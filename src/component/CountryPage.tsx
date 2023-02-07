@@ -85,7 +85,8 @@ const CountryPage = ({ countryCode }: Props) => {
 										</Span>
 									</Title>
 									<Title>
-										Population:<Span>{country.population}</Span>
+										Population:
+										<Span>{country.population.toLocaleString()}</Span>
 									</Title>
 									<Title>
 										Region:<Span>{country.region}</Span>

@@ -98,7 +98,7 @@ const Home = ({ setCountryCode }: Props) => {
 									</h2>
 									<div>
 										Population:
-										<Span>{country.population}</Span>
+										<Span>{country.population.toLocaleString()}</Span>
 									</div>
 									<div>
 										Region: <Span>{country.region}</Span>
