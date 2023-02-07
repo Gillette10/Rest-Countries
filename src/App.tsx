@@ -2,7 +2,6 @@ import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import Home from "./component/Home";
 import NavBar from "./component/NavBar";
-import Search from "./component/Search";
 import { GlobalStyle } from "./globalStyles";
 import { darkTheme, lightTheme } from "./themeComponent/theme";
 import { ThemeContext } from "./themeComponent/themeContext";
@@ -12,6 +11,11 @@ import CountryPage from "./component/CountryPage";
 const App = () => {
 	const [theme, setTheme] = useState("light");
 	const [countryCode, setCountryCode] = useState("");
+
+	//handling the submission of single page for each country
+	const handleClick = (code: string) => {
+		setCountryCode(code);
+	};
 
 	const toggleTheme = () => {
 		if (theme === "light") {
