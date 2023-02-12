@@ -1,12 +1,14 @@
 import styled, { keyframes } from "styled-components";
 import { useGetCountryQuery } from "../countryApi";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-interface Props {
-	countryCode: string;
+interface RootState {
+	country: { code: "" };
 }
-const CountryPage = ({ countryCode }: Props) => {
-	const { data } = useGetCountryQuery(countryCode);
+const CountryPage = () => {
+	const { code } = useSelector((state: RootState) => state.country);
+	const { data } = useGetCountryQuery(code);
 
 	interface UserJSON {
 		name: {
@@ -42,7 +44,7 @@ const CountryPage = ({ countryCode }: Props) => {
 	// country.tld[0]
 	//CURRENCIES
 	//Object.values(country.currencies)[0].name
-	//LANGUESGES
+	//LANGUAGE
 	//Object.values(country.languages).map((lang) => {console.log(lang);});
 
 	return (

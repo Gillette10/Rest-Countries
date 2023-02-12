@@ -10,12 +10,6 @@ import CountryPage from "./component/CountryPage";
 
 const App = () => {
 	const [theme, setTheme] = useState("light");
-	const [countryCode, setCountryCode] = useState("");
-
-	//handling the submission of single page for each country
-	const handleClick = (code: string) => {
-		setCountryCode(code);
-	};
 
 	const toggleTheme = () => {
 		if (theme === "light") {
@@ -32,14 +26,8 @@ const App = () => {
 					<GlobalStyle />
 					<NavBar />
 					<Routes>
-						<Route
-							path="/"
-							element={<Home setCountryCode={setCountryCode} />}
-						/>
-						<Route
-							path="/countrypage"
-							element={<CountryPage countryCode={countryCode} />}
-						/>
+						<Route path="/" element={<Home />} />
+						<Route path="/countrypage" element={<CountryPage />} />
 					</Routes>
 				</ThemeContext.Provider>
 			</ThemeProvider>

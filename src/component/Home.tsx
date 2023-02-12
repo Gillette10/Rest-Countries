@@ -1,8 +1,9 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styled, { keyframes } from "styled-components";
 import { useGetAllCountriesQuery } from "../countryApi";
 import Search from "./Search";
 import { Link } from "react-router-dom";
+import { changeCountry } from "../features/countrySlice";
 
 interface RootState {
 	search: {
@@ -10,19 +11,17 @@ interface RootState {
 		selectedOption: string;
 	};
 }
-interface Props {
-	setCountryCode: React.Dispatch<React.SetStateAction<string>>;
-}
 
-const Home = ({ setCountryCode }: Props) => {
+const Home = () => {
 	const { data, error, isLoading } = useGetAllCountriesQuery([]);
 	const { selectedOption, value } = useSelector(
 		(state: RootState) => state.search,
 	);
+	const dispatch = useDispatch();
 
 	//handling the submission of single page for each country
 	const handleClick = (code: string) => {
-		setCountryCode(code);
+		dispatch(changeCountry(code));
 	};
 
 	interface UserJSON {
